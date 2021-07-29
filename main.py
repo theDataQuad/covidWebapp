@@ -4,6 +4,7 @@ from flask import Flask, render_template, flash, request, jsonify, Markup
 
 import pandas as pd
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import io, base64, os
