@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import io, base64, os
 
+matplotlib.use('Agg')
 app = Flask(__name__)
 
 
