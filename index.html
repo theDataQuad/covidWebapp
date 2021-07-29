@@ -11,7 +11,6 @@
 
   </head>
   <body>
-Navbar
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
@@ -49,10 +48,12 @@ Navbar
     <div class="card-body">
       <h3>See the&nbsp; <strong>PLOTS&nbsp;</strong></h3>
 	  <br>
-		<form>
-			<select>
-				<option> Kerala </option>
+		<form id='submit_params' method="POST" action="{{ url_for('submit_new_request') }}">
+		<div class="form-group">
+			<select class="selectpicker" name="selected_state1">
+<option value="{{selected_state1}}" selected>{{selected_state1}}</option>
 <option> India </option>
+<option> Kerala </option>
 <option> Delhi </option>
 <option> Telangana </option>
 <option> Rajasthan </option>
@@ -90,7 +91,8 @@ Navbar
 <option> State Unassigned </option>
 <option> Lakshadweep </option>
 			</select>
-			<select>
+			<select class="selectpicker" name="selected_state2">
+<option value="{{selected_state2}}" selected>{{selected_state2}}</option>
 <option> Kerala </option>
 <option> India </option>
 <option> Delhi </option>
@@ -135,8 +137,11 @@ Navbar
 		  <option>Feature 2</option></select>
 			<br>
 			<input type="reset">
-			<button class="btn btn-default" type="submit" style="width: 100px; height: 30px;">SUBMIT</button></form>
+			<button class="btn btn-default" type="submit" style="width: 100px; height: 30px;">SUBMIT</button>
     </div>
+{{model_plot}}
+</div>
+</form>
     </div>
        <br>
        <hr>
