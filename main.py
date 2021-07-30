@@ -12,10 +12,7 @@ import io, base64, os
 matplotlib.use('Agg')
 app = Flask(__name__)
 
-
-@app.before_first_request
-def startup():
-    def twoStates(slist,feature):
+def twoStates(slist,feature):
             df=swave[swave.State.isin(slist)]
             x = np.random.randint(low=0, high=5, size=150)
 
@@ -28,6 +25,9 @@ def startup():
             img = io.BytesIO()
             plt.savefig(img, format='png')
             return(img.seek(0))
+
+@app.before_first_request
+def startup():
     df=pd.read_csv('states18.csv')
     statelist=df['State'].unique()
     c=df.columns
