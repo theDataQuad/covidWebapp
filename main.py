@@ -11,7 +11,11 @@ import io, base64, os
 
 matplotlib.use('Agg')
 app = Flask(__name__)
-def twoStates(slist,feature):
+
+
+@app.before_first_request
+def startup():
+    def twoStates(slist,feature):
             df=swave[swave.State.isin(slist)]
             x = np.random.randint(low=0, high=5, size=150)
 
@@ -24,10 +28,22 @@ def twoStates(slist,feature):
             img = io.BytesIO()
             plt.savefig(img, format='png')
             return(img.seek(0))
-
-#@app.before_first_request
-#def startup():
-
+    df=pd.read_csv('states18.csv')
+    statelist=df['State'].unique()
+    c=df.columns
+    ndf = pd.DataFrame(columns=c)
+    ndf=pd.DataFrame()
+    for state in statelist:
+        dftest=df.groupby('State').get_group(state)
+        dftest=dftest.set_index(['Date'])
+        dftest.drop('State',axis=1,inplace=True)
+        dftest=dftest.diff(axis=0,periods=1)
+        dftest['State']=state
+        dftest.reset_index(inplace=True)
+        ndf=pd.concat([ndf,dftest])
+    ndf.sort_values(by=['Date'],ignore_index=True,inplace=True)
+    ndf.dtypes
+    swave=ndf.loc[12610:,["Date",'State','Confirmed','Recovered','Deceased','Other','Tested']]
 #swave.groupby('State').get_group("Kerala").plot(x='Date',y=['Confirmed','Tested'],figsize=(10,8.5),label=['Kerala_Confirmed',"tested"])
 #plt.legend()
 #swave.groupby('State').get_group("Uttar Pradesh").plot(x='Date',y=['Confirmed','Tested'],figsize=(10,8.5),label=['UPConfirmed','Tested'])
@@ -71,35 +87,6 @@ DEFAULT_STATE2='Kerala'
 @app.route("/", methods=['POST', 'GET'])
 def submit_new_request():
     if request.method == 'POST':
-        df=pd.read_csv('states18.csv')
-        statelist=df['State'].unique()
-        c=df.columns
-        ndf = pd.DataFrame(columns=c)
-        ndf=pd.DataFrame()
-        for state in statelist:
-            dftest=df.groupby('State').get_group(state)
-            dftest=dftest.set_index(['Date'])
-            dftest.drop('State',axis=1,inplace=True)
-            dftest=dftest.diff(axis=0,periods=1)
-            dftest['State']=state
-            dftest.reset_index(inplace=True)
-            ndf=pd.concat([ndf,dftest])
-        ndf.sort_values(by=['Date'],ignore_index=True,inplace=True)
-        ndf.dtypes
-        swave=ndf.loc[12610:,["Date",'State','Confirmed','Recovered','Deceased','Other','Tested']]
-        def twoStates(slist,feature):
-            df=swave[swave.State.isin(slist)]
-            x = np.random.randint(low=0, high=5, size=150)
-
-            fig, ax = plt.subplots(figsize=(12, 7))
-            sns.lineplot(data=df, x="Date", y=feature, hue="State",linewidth = 2)
-            plt.legend( bbox_to_anchor=(1.02, 1),loc='upper left', borderaxespad=0, title='states')
-            plt.title(feature+' Comparrison')
-            plt.xticks(np.arange(0, len(x)+15, 20))
-            #ax.set_xticks(np.arange(0, len(x)+1, 5))
-            img = io.BytesIO()
-            plt.savefig(img, format='png')
-            return(img)
         selected_state1 = request.form['selected_state1']
         selected_state2 = request.form['selected_state2']
         states=[selected_state1,selected_state2]
