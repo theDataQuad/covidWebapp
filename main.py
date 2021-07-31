@@ -103,7 +103,7 @@ def submit_new_request():
         selected_state1 = request.form['selected_state1']
         selected_state2 = request.form['selected_state2']
         states=[selected_state1,selected_state2]
-        feature='Confirmed'
+        feature=selected_state2 = request.form['selected_state3']
         img=twoStates(states,feature)
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
