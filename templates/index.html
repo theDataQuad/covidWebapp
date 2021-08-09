@@ -8,6 +8,9 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
+      
+    <!-- Plotly-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   </head>
   <body>
@@ -132,8 +135,8 @@
 <option> State Unassigned </option>
 <option> Lakshadweep </option>
 			</select>
-<select class="selectpicker" name="selected_state3">
-<option value="{{selected_state3}}" selected>{{feature}}</option>
+<select class="selectpicker" name="selected_feature">
+<option value="{{selected_feature}}" selected>{{selected_feature}}</option>
 <option>Confirmed</option>
 <option>Recovered</option>
 <option>Deceased</option>
@@ -146,6 +149,9 @@
 {{model_plot}}
 </div>
 </form>
+    </div>
+<div class=container>
+    
     </div>
        <br>
        <hr>

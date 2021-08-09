@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from flask import Flask, render_template, flash, request, jsonify, Markup
-
+from vaccination_pie import pie_chart
 
 import pandas as pd
 import numpy as np
@@ -11,20 +11,6 @@ import io, base64, os
 
 matplotlib.use('Agg')
 app = Flask(__name__)
-def twoStates(slist,feature):
-            df=swave[swave.State.isin(slist)]
-            x = np.random.randint(low=0, high=5, size=150)
-
-            fig, ax = plt.subplots(figsize=(12, 7))
-            sns.lineplot(data=df, x="Date", y=feature, hue="State",linewidth = 2)
-            plt.legend( bbox_to_anchor=(1.02, 1),loc='upper left', borderaxespad=0, title='states')
-            plt.title(feature+' Comparrison')
-            plt.xticks(np.arange(0, len(x)+15, 20))
-            #ax.set_xticks(np.arange(0, len(x)+1, 5))
-            img = io.BytesIO()
-            plt.savefig(img, format='png')
-            return(img.seek(0))
-
 #@app.before_first_request
 #def startup():
 
@@ -67,6 +53,7 @@ def twoStates(slist,feature):
 #plt.show
 DEFAULT_STATE1='India'
 DEFAULT_STATE2='Kerala'
+DEFAULT_FEATURE='Confirmed'
 
 @app.route("/", methods=['POST', 'GET'])
 def submit_new_request():
@@ -87,10 +74,10 @@ def submit_new_request():
         ndf.sort_values(by=['Date'],ignore_index=True,inplace=True)
         ndf.dtypes
         swave=ndf.loc[12610:,["Date",'State','Confirmed','Recovered','Deceased','Other','Tested']]
+
         def twoStates(slist,feature):
             df=swave[swave.State.isin(slist)]
             x = np.random.randint(low=0, high=5, size=150)
-
             fig, ax = plt.subplots(figsize=(12, 7))
             sns.lineplot(data=df, x="Date", y=feature, hue="State",linewidth = 2)
             plt.legend( bbox_to_anchor=(1.02, 1),loc='upper left', borderaxespad=0, title='states')
@@ -100,22 +87,27 @@ def submit_new_request():
             img = io.BytesIO()
             plt.savefig(img, format='png')
             return(img)
+
         selected_state1 = request.form['selected_state1']
         selected_state2 = request.form['selected_state2']
         states=[selected_state1,selected_state2]
-        feature=selected_state2 = request.form['selected_state3']
-        img=twoStates(states,feature)
+        selected_feature=request.form['selected_feature']
+
+        img=twoStates(states,selected_feature)
         img.seek(0)
+
         plot_url = base64.b64encode(img.getvalue()).decode()
         return render_template('index.html',
                 model_plot = Markup('<img src="data:image/png;base64,{}">'.format(plot_url)),
             selected_state1=selected_state1,
-            selected_state2=selected_state2)
+            selected_state2=selected_state2,
+            selected_feature=selected_feature)
     else:
         return render_template('index.html',
             model_plot = '',
             selected_state1=DEFAULT_STATE1,
-            selected_state2=DEFAULT_STATE2)
+            selected_state2=DEFAULT_STATE2,
+            selected_feature=DEFAULT_FEATURE)
 
 if __name__=='__main__':
 	app.run(debug=False)
