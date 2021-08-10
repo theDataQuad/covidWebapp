@@ -5,19 +5,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import plotly.express as px
+import plotly.graph_objs as go
 
 def pie_chart(State):
-    pie=df[df.State.isin([State])]
-    pi=pie.T
-    print(pie)
-    print(pi)
-    pi.reset_index(inplace=True)
-    pi.drop([0,2,3],inplace=True)
-    pi.columns=['x','Total']
-    li=pi.columns
-    fig = px.pie(pi, values=li[1], names=li[0], title=State+' Vaccination Percentage',color_discrete_sequence=px.colors.sequential.RdBu)
-
     url='http://api.covid19india.org/csv/latest/vaccine_doses_statewise_v2.csv'
     vac=pd.read_csv(url)
     pop=pd.read_csv('projected_population2021.csv')
@@ -37,8 +27,22 @@ def pie_chart(State):
     pop['Population']=pop['Population'].str.replace(',','').astype(int)
     df=pd.merge(pop,sumvac,on='State',how='inner')
     df=df.drop('Vaccinated As of',axis=1)
-    fig = px.pie(dfs, values=li[1], names=li[0], title='Vaccination Percentage')
+    pie=df[df.State.isin([State])]
+    pi=pie.T
+    pi.reset_index(inplace=True)
+    pi.drop([0,2,3],inplace=True)
+    pi.columns=['x','Total']
+    li=pi.columns
+    #fig = px.pie(dfs, values=li[1], names=li[0], title='Vaccination Percentage')
     #fig.show()
-    return fig.show()
+    pie_chart = []
+    pie_chart.append(go.Pie(pi, values=li[1], names=li[0], title=State+' Vaccination Percentage'))#color_discrete_sequence=go.colors.sequential.RdBu
+    layout_one = dict(title = 'Chart Four',
+                xaxis = dict(title = 'x-axis label'),
+                yaxis = dict(title = 'y-axis label'),
+                )
+    fig = []
+    fig.append(dict(data=pie_chart, layout=layout_one))
+    return fig
 
 #pie_chart('Lakshadweep')

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from flask import Flask, render_template, flash, request, jsonify, Markup
 from vaccination_pie import pie_chart
+import json,plotly
 
 import pandas as pd
 import numpy as np
@@ -93,6 +94,9 @@ def submit_new_request():
         states=[selected_state1,selected_state2]
         selected_feature=request.form['selected_feature']
 
+        pie = pie_chart(selected_state1)#for pie
+        pieJSON = json.dumps(pie, cls=plotly.utils.PlotlyJSONEncoder)#for pie to json
+
         img=twoStates(states,selected_feature)
         img.seek(0)
 
@@ -101,13 +105,17 @@ def submit_new_request():
                 model_plot = Markup('<img src="data:image/png;base64,{}">'.format(plot_url)),
             selected_state1=selected_state1,
             selected_state2=selected_state2,
-            selected_feature=selected_feature)
+            selected_feature=selected_feature,
+            pieJSON=pieJSON)
     else:
+        pie = pie_chart('Kerala')#for pie PLACEHOLDER
+        pieJSON = json.dumps(pie, cls=plotly.utils.PlotlyJSONEncoder)#for pie to json
         return render_template('index.html',
             model_plot = '',
             selected_state1=DEFAULT_STATE1,
             selected_state2=DEFAULT_STATE2,
-            selected_feature=DEFAULT_FEATURE)
+            selected_feature=DEFAULT_FEATURE,
+            pieJSON=pieJSON)
 
 if __name__=='__main__':
 	app.run(debug=False)
