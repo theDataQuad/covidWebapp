@@ -1,39 +1,39 @@
-Rank,State or union territory,Population (2021 estimates)
-1,Uttar Pradesh,"241,066,874"
-2,Maharashtra,"129,877,541"
-3,Bihar,"128,864,915"
-4,West Bengal,"103,815,877"
-5,Andhra Pradesh,"53,206,421"
-6,Madhya Pradesh,"86,044,251"
-7,Tamil Nadu,"82,722,262"
-8,Rajasthan,"80,782,495"
-9,Karnataka,"70,462,375"
-10,Gujarat,"72,736,247"
-11,Odisha,"48,126,658"
-12,Kerala,"35,336,581"
-13,Telangana,"41,008,763"
-14,Jharkhand,"40,929,284"
-15,Assam,"31,169,272"
-16,Punjab,"31,623,274"
-17,Haryana,"30,351,496"
-18,Chhattisgarh,"25,540,196"
-19,Uttarakhand,"10,116,752"
-20,Himachal Pradesh,"7,663,167"
-21,Tripura,"3,671,032"
-22,Meghalaya,"2,964,007"
-23,Manipur,"2,721,756"
-24,Nagaland,"1,980,602"
-25,Goa,"1,457,723"
-26,Arunachal Pradesh,"1,382,611"
-27,Mizoram,"1,091,014"
-28,Sikkim,"658,361"
-UT1,Delhi,"20,188,648"
-UT2,Puducherry,"1,244,464"
-UT3,Chandigarh,"1,545,116"
-UT4,Andaman & Nicobar Islands,"379,944"
-UT5,Dadra and Nagar Haveli,"342,853"
-UT6,Daman and Diu,"242,911"
-UT7,Lakshadweep,"64,429"
-UT8,Jammu & Kashmir,"15,427,841"
-UT9,Ladakh,"274,289"
-Total,India,"1,350,590,492"
+State,Population
+Uttar Pradesh,241066874
+Maharashtra,129877541
+Bihar,128864915
+West Bengal,103815877
+Andhra Pradesh,53206421
+Madhya Pradesh,86044251
+Tamil Nadu,82722262
+Rajasthan,80782495
+Karnataka,70462375
+Gujarat,72736247
+Odisha,48126658
+Kerala,35336581
+Telangana,41008763
+Jharkhand,40929284
+Assam,31169272
+Punjab,31623274
+Haryana,30351496
+Chhattisgarh,25540196
+Uttarakhand,10116752
+Himachal Pradesh,7663167
+Tripura,3671032
+Meghalaya,2964007
+Manipur,2721756
+Nagaland,1980602
+Goa,1457723
+Arunachal Pradesh,1382611
+Mizoram,1091014
+Sikkim,658361
+Delhi,20188648
+Puducherry,1244464
+Chandigarh,1545116
+Andaman and Nicobar Islands,379944
+Dadra and Nagar Haveli and Daman and Diu,585764
+Daman and Diu,242911
+Lakshadweep,64429
+Jammu and Kashmir,15427841
+Ladakh,274289
+India,1350590492
