@@ -3,9 +3,9 @@ import pandas as pd
 url_vac='http://api.covid19india.org/csv/latest/vaccine_doses_statewise_v2.csv'
 url_day='https://api.covid19india.org/csv/latest/states.csv'
 df=pd.read_csv(url_day)
+#TODO: clarify about state unassigned
 print("Contact with API")
 
-#TODO: clarify about state unassigned
 statelist=df['State'].unique()
 ndf = pd.DataFrame(columns=df.columns)
 for state in statelist:
@@ -15,8 +15,9 @@ for state in statelist:
     dftest['State']=state
     dftest.reset_index(inplace=True)
     ndf=pd.concat([ndf,dftest])
-
 ndf.sort_values(by=['Date'],ignore_index=True,inplace=True)
+
+ndf['Death_Rate']=((df['Deceased']/df['Confirmed'])*1000).round(2)#it is df's cumulative data and death rate till date
 ndf.to_csv('daily.csv',index=False)
 print('daily covid data saved!!')
 

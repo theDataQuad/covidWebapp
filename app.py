@@ -7,7 +7,7 @@ import dash_core_components as dcc
 from dash.dependencies import Output, Input
 
 from api import data
-from viz.plt import lineState,pie_chart
+from viz.plt import lineState,pie_chart,barChart
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -31,15 +31,10 @@ app.layout = html.Div([
            dcc.Graph(id='pie')
        ], label='States'),
         dbc.Tab([
-            html.Ul([
-                html.Br(),
-                html.Li('Book title: Interactive Dashboards and Data Apps with Plotly and Dash'),
-                html.Li(['GitHub repo: ',
-                         html.A('https://github.com/PacktPublishing/Interactive-Dashboards-and-Data-Apps-with-Plotly-and-Dash',
-                                href='https://github.com/PacktPublishing/Interactive-Dashboards-and-Data-Apps-with-Plotly-and-Dash')
-                         ])
-            ])
-        ], label='Project Info')
+            dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
+                          for feature in ['Death_rate']],value='Death_rate'),
+            dcc.Graph(id='bar'),
+        ], label='Death Rate')
     ])
 ])
 
@@ -57,6 +52,12 @@ def display_selected_state(state1,state2,feature):
               Input('feature', 'value'))
 def display_selected_state_line(state1,state2,Feature='Confirmed'):
     return lineState([state1,state2],Feature)
+
+@app.callback(Output('bar', 'figure'),
+              Input('bar_item', 'value'))
+def display_death_date(bar_item):
+    return barChart()
+
 
 @app.callback(Output('pie', 'figure'),
               Input('state2', 'value'))
