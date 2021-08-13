@@ -20,11 +20,15 @@ ndf.to_csv('daily.csv',index=False)
 print('daily covid data saved!!')
 
 vac=pd.read_csv(url_vac)
+#change total to india
 vac.to_csv('vac_daily.csv',index=False)
 print('daily vaccination data saved!!')
 
 sumvac=vac.tail(38)
+
 pop=pd.read_csv('projected_population2021.csv')
+
+##remove
 pop.rename({'State or union territory':'State'},axis=1,inplace=True)
 pop=pop.drop('Rank',axis=1)
 pop['State'][35]="Jammu and Kashmir"
@@ -37,6 +41,9 @@ pop['Population']=pop['Population'].str.replace(',','').astype(int)
 
 df=pd.merge(pop,sumvac,on='State',how='inner')
 df=df.drop('Vaccinated As of',axis=1)
-
+df['Not_Vaccinated']=df['Population']-df['First Dose Administered']
+df.rename({'First Dose Administered':'Partially_Vaccinated','Second Dose Administered':'Fully_Vaccinated'},axis=1,inplace=True)
+df.drop('Total Doses Administered',axis=1,inplace=True)
+df['Partially_Vaccinated1']=df['Partially_Vaccinated']-df['Fully_Vaccinated']
 df.to_csv('pop_with_vac.csv',index=False)
 print('population data saved!!')
