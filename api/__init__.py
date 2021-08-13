@@ -45,5 +45,6 @@ df['Not_Vaccinated']=df['Population']-df['First Dose Administered']
 df.rename({'First Dose Administered':'Partially_Vaccinated','Second Dose Administered':'Fully_Vaccinated'},axis=1,inplace=True)
 df.drop('Total Doses Administered',axis=1,inplace=True)
 df['Partially_Vaccinated1']=df['Partially_Vaccinated']-df['Fully_Vaccinated']
+
 df.to_csv('pop_with_vac.csv',index=False)
 print('population data saved!!')
