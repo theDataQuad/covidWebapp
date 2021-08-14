@@ -16,6 +16,11 @@ app.layout = html.Div([
             style={'color': 'blue',
                    'fontSize': '40px'}),
     dbc.Tabs([
+        dbc.Tab([
+            dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
+                          for feature in ['Death_rate']],value='Death_rate'),
+            dcc.Graph(id='bar'),
+        ], label='Country'),
        dbc.Tab([
            html.Div([
            dcc.Dropdown(id='state1',options=[{'label': state, 'value': state}
@@ -29,12 +34,7 @@ app.layout = html.Div([
            html.Div(id='report'),
            dcc.Graph(id='line'),
            dcc.Graph(id='pie')
-       ], label='States'),
-        dbc.Tab([
-            dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
-                          for feature in ['Death_rate']],value='Death_rate'),
-            dcc.Graph(id='bar'),
-        ], label='Death Rate')
+       ], label='States Comparision')
     ])
 ])
 
