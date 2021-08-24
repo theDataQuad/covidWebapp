@@ -19,7 +19,7 @@ def pie_chart(State):
     y=pi['Total'].tolist()
     trace = go.Pie(labels=x,values=y)
     data_to_plot = [trace]
-    layout_one = dict(title = 'Vaccination status of '+State)
+    layout_one = go.Layout(height=900, width=900,title=go.layout.Title(text='Vaccination status of '+State))
     pie_chart = go.Figure(data = data_to_plot,layout=layout_one)
     return pie_chart
 
@@ -28,5 +28,6 @@ def barChart():
     last37=last37.tail(37)
     last37.sort_values(by='Death_Rate',inplace=True,ascending=False)
     data_to_plot = [go.Bar(x =last37['State'],y =last37['Death_Rate'] ,orientation="v")]
-    fig = go.Figure(data=data_to_plot,layout=go.Layout(height=900, width=900,title=go.layout.Title(text="Statewise Death Rates")))
+    layout=go.Layout(height=900, width=900,title=go.layout.Title(text="Statewise Death Rates"))
+    fig = go.Figure(data=data_to_plot,layout=layout)
     return fig

@@ -1,4 +1,6 @@
 import pandas as pd
+import warnings
+warnings.filterwarnings("ignore")
 
 url_vac='http://api.covid19india.org/csv/latest/vaccine_doses_statewise_v2.csv'
 url_day='https://api.covid19india.org/csv/latest/states.csv'
