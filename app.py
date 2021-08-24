@@ -26,7 +26,8 @@ print("App is Ready to use at ", datetime.now().strftime("%H:%M:%S"))#timestamp
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div([
-    html.H1('COVID WEBAPP',
+    html.Title('Statewise Viz'),
+    html.H1('COVID VIZ',
             style={'color': 'blue',
                    'fontSize': '80px'}),
     dbc.Tabs([
@@ -52,11 +53,32 @@ app.layout = html.Div([
            dcc.Dropdown(id='state2',options=[{'label': state, 'value': state}
                           for state in data.statelist()],value='Goa'),
            dcc.Dropdown(id='feature',options=[{'label': feature, 'value': feature}
-                          for feature in data.featurelist()],value='Confirmed')
+                          for feature in data.featurelist()],value='Confirmed')#remove this
                      ]),
            html.Br(),
            html.Div(id='report'),
-           dcc.Graph(id='line')
+           html.Div([
+           html.Div([
+                html.Div([
+                    dcc.Graph(id='line')
+                ],className="six columns")
+            ],className="row",style={'width':'75%', 'margin':5, 'Align': 'center'}),
+           html.Div([
+                html.Div([
+                    dcc.Graph(id='line2')
+                ],className="six columns")
+            ],className="row"),
+           html.Div([
+                html.Div([
+                    dcc.Graph(id='line3')
+                ],className="six columns")
+            ],className="row"),
+           html.Div([
+                html.Div([
+                    dcc.Graph(id='line4')
+                ],className="six columns")
+            ],className="row")
+           ],style={'width':'75%', 'margin':5, 'Align': 'center'})
        ], label='States Comparision')
     ])
 ])
@@ -73,12 +95,12 @@ def display_selected_state(state1,state2,feature):
     return 'You selected ' + state1 + ' and ' +state2 +' with feature ' + feature
 
 
-@app.callback(Output('line', 'figure'),
+@app.callback(Output('line', 'figure'),#change this
               Input('state1', 'value'),
               Input('state2', 'value'),
-              Input('feature', 'value'))
-def display_selected_state_line(state1,state2,Feature='Confirmed'):
-    return lineState([state1,state2],Feature)
+              Input('feature', 'value'))#remove this
+def display_selected_state_line(state1,state2,Feature='Confirmed'):#remove feature
+    return lineState([state1,state2],Feature)#give string as input
 
 @app.callback(Output('bar', 'figure'),
               Input('bar_item', 'value'))
