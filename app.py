@@ -39,7 +39,7 @@ app.layout = html.Div([
                           for feature in ['Death_rate']],value='Death_rate'),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='bar')
+                    dcc.Graph(id='bar',clickData=None)
                 ],className="six columns"),
                 html.Div([
                     dcc.Graph(id='pie')
@@ -109,9 +109,12 @@ def display_death_date(bar_item):
 
 
 @app.callback(Output('pie', 'figure'),
-              Input('selected_state_in_bar', 'value'))#should be replaced by input from bar
+              Input('bar',component_property='clickData'))#Input('selected_state_in_bar', 'value'))#should be replaced by input from bar
 def display_selected_state_line(state):
-    return pie_chart(state)
+    if state is None:
+        return pie_chart('India')
+    else:
+        return pie_chart(state['points'][0]['x'])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
