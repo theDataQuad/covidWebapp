@@ -74,13 +74,25 @@ app.layout = html.Div([
                 ],align="center"),
                html.Br(),
                dbc.Row([
-                html.Div([
-                    dcc.Graph(id='line3')
-                ]),
-                html.Div([
-                    dcc.Graph(id='line4')
-                ])
-            ],align="center",),
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([
+                           html.Div([
+                               dcc.Graph(id='line3')
+                            ])
+                           ])
+                           ], color="dark")
+                       ],width=6),#,width={"size": 5}
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([#"This is some text within a card body", #remove comment if needed
+                            html.Div([
+                                dcc.Graph(id='line4')
+                             ])
+                             ])
+                    ], color="dark")
+                   ],width=6)
+                ],align="center"),
            ],style={'width':'75%', 'margin':5, 'Align': 'center'})
        ], label='States Comparision')
     ])

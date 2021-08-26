@@ -4,6 +4,7 @@ from plotly.express import line as px_line
 import plotly.graph_objs as go
 
 def lineState(State,Feature):
+    #REMOVE GRID LINES
     swave=data.daily()
     s=swave[swave.State.isin(State)]
     return px_line(s, x="Date", y=Feature,color='State',title='Comparison of '+Feature+' Cases in '+State[0]+' and '+State[1]).update_layout(
