@@ -95,12 +95,12 @@ def display_selected_state(state1,state2,feature):
     return 'You selected ' + state1 + ' and ' +state2 +' with feature ' + feature
 
 
-@app.callback(Output('line', 'figure'),#change this
-              Input('state1', 'value'),
-              Input('state2', 'value'),
-              Input('feature', 'value'))#remove this
-def display_selected_state_line(state1,state2,Feature='Confirmed'):#remove feature
-    return lineState([state1,state2],Feature)#give string as input
+@app.callback([Output('line', 'figure'),Output('line2','figure'),Output('line3','figure'),Output('line4','figure')],
+              [Input('state1', 'value'),
+              Input('state2', 'value'),])
+             
+def display_selected_state_line(state1,state2):
+    return lineState([state1,state2],'Tested'),lineState([state1,state2],'Confirmed'),lineState([state1,state2],'Recovered'),lineState([state1,state2],'Deceased')
 
 @app.callback(Output('bar', 'figure'),
               Input('bar_item', 'value'))
