@@ -32,9 +32,6 @@ app.layout = html.Div([
                    'fontSize': '80px'}),
     dbc.Tabs([
         dbc.Tab([
-            dcc.Dropdown(id='selected_state_in_bar',options=[{'label': state, 'value': state}
-                          for state in data.statelist()],value='Goa'),#Should be replaced by selection in bar
-
             dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
                           for feature in ['Death_rate']],value='Death_rate'),
             html.Div([
@@ -51,12 +48,9 @@ app.layout = html.Div([
            dcc.Dropdown(id='state1',options=[{'label': state, 'value': state}
                           for state in data.statelist()],value='Kerala'),
            dcc.Dropdown(id='state2',options=[{'label': state, 'value': state}
-                          for state in data.statelist()],value='Goa'),
-           dcc.Dropdown(id='feature',options=[{'label': feature, 'value': feature}
-                          for feature in data.featurelist()],value='Confirmed')#remove this
+                          for state in data.statelist()],value='Goa')
                      ]),
            html.Br(),
-           html.Div(id='report'),
            html.Div([
            html.Div([
                 html.Div([
@@ -87,27 +81,20 @@ app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
 })
 
-@app.callback(Output('report', 'children'),
-              Input('state1', 'value'),
-              Input('state2', 'value'),
-              Input('feature', 'value'))
-def display_selected_state(state1,state2,feature):
-    return 'You selected ' + state1 + ' and ' +state2 +' with feature ' + feature
-
-
+#LINES
 @app.callback([Output('line', 'figure'),Output('line2','figure'),Output('line3','figure'),Output('line4','figure')],
               [Input('state1', 'value'),
               Input('state2', 'value'),])
-             
 def display_selected_state_line(state1,state2):
     return lineState([state1,state2],'Tested'),lineState([state1,state2],'Confirmed'),lineState([state1,state2],'Recovered'),lineState([state1,state2],'Deceased')
 
+#BARCHART
 @app.callback(Output('bar', 'figure'),
               Input('bar_item', 'value'))
 def display_death_date(bar_item):
     return barChart()
 
-
+#PIECHART
 @app.callback(Output('pie', 'figure'),
               Input('bar',component_property='clickData'))#Input('selected_state_in_bar', 'value'))#should be replaced by input from bar
 def display_selected_state_line(state):
