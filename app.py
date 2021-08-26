@@ -32,11 +32,11 @@ app.layout = html.Div([
                    'fontSize': '80px'}),
     dbc.Tabs([
         dbc.Tab([
-            dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
-                          for feature in ['Death_rate']],value='Death_rate'),
+            #dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
+             #             for feature in ['Death_rate']],value='Death_rate'),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='bar',clickData=None)
+                    dcc.Graph(id='bar',clickData=None,figure=barChart())
                 ],className="six columns"),
                 html.Div([
                     dcc.Graph(id='pie')
@@ -45,14 +45,13 @@ app.layout = html.Div([
         ], label='Country'),
        dbc.Tab([
            html.Div([
-           dcc.Dropdown(id='state1',options=[{'label': state, 'value': state}
-                          for state in data.statelist()],value='Kerala'),
-           dcc.Dropdown(id='state2',options=[{'label': state, 'value': state}
-                          for state in data.statelist()],value='Goa')
+           dcc.Dropdown(id='state1',multi=True,options=[{'label': state, 'value': state}
+                          for state in data.statelist()],value=['Kerala','Goa'], style={'background-color':"black",'color': 'black'})
                      ]),
            html.Br(),
            html.Div([
-               dbc.Row([
+               dbc.Container([
+                   dbc.Row([
                    dbc.Col([
                        dbc.Card([
                            dbc.CardBody([
@@ -61,7 +60,7 @@ app.layout = html.Div([
                             ])
                            ])
                            ], color="dark")
-                       ],width=6),#,width={"size": 5}
+                       ],width={"size": 6}),#,width={"size": 5}
                    dbc.Col([
                        dbc.Card([
                            dbc.CardBody([#"This is some text within a card body", #remove comment if needed
@@ -70,9 +69,11 @@ app.layout = html.Div([
                              ])
                              ])
                     ], color="dark")
-                   ],width=6)
-                ],align="center"),
+                   ],width={"size": 6})
+                ],align="center")
+                   ]),
                html.Br(),
+               dbc.Container([
                dbc.Row([
                    dbc.Col([
                        dbc.Card([
@@ -82,7 +83,7 @@ app.layout = html.Div([
                             ])
                            ])
                            ], color="dark")
-                       ],width=6),#,width={"size": 5}
+                       ],width={"size": 6}),#,width={"size": 5,"offset": 1}
                    dbc.Col([
                        dbc.Card([
                            dbc.CardBody([#"This is some text within a card body", #remove comment if needed
@@ -91,8 +92,9 @@ app.layout = html.Div([
                              ])
                              ])
                     ], color="dark")
-                   ],width=6)
-                ],align="center"),
+                   ],width={"size": 6})
+                ],align="center")
+                   ])
            ],style={'width':'75%', 'margin':5, 'Align': 'center'})
        ], label='States Comparision')
     ])
@@ -104,16 +106,14 @@ app.css.append_css({
 
 #LINES
 @app.callback([Output('line', 'figure'),Output('line2','figure'),Output('line3','figure'),Output('line4','figure')],
-              [Input('state1', 'value'),
-              Input('state2', 'value'),])
-def display_selected_state_line(state1,state2):
-    return lineState([state1,state2],'Tested'),lineState([state1,state2],'Confirmed'),lineState([state1,state2],'Recovered'),lineState([state1,state2],'Deceased')
+              [Input('state1', 'value')])
+def display_selected_state_line(state1):
+    if type(state1)=='str':
+        return lineState([state1],'Tested'),lineState([state1],'Confirmed'),lineState([state1],'Recovered'),lineState([state1],'Deceased')
+    else:
+        return lineState(state1,'Tested'),lineState(state1,'Confirmed'),lineState(state1,'Recovered'),lineState(state1,'Deceased')
 
-#BARCHART
-@app.callback(Output('bar', 'figure'),
-              Input('bar_item', 'value'))
-def display_death_date(bar_item):
-    return barChart()
+
 
 #PIECHART
 @app.callback(Output('pie', 'figure'),
