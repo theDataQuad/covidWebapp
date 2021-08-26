@@ -59,7 +59,7 @@ app.layout = html.Div([
                                dcc.Graph(id='line')
                             ])
                            ])
-                           ], color="dark")
+                           ], color="dark",className="w-100 mb-3")
                        ],width={"size": 6}),#,width={"size": 5}
                    dbc.Col([
                        dbc.Card([
@@ -71,7 +71,7 @@ app.layout = html.Div([
                     ], color="dark")
                    ],width={"size": 6})
                 ],align="center")
-                   ]),
+                   ],fluid=True),
                html.Br(),
                dbc.Container([
                dbc.Row([
@@ -94,7 +94,7 @@ app.layout = html.Div([
                     ], color="dark")
                    ],width={"size": 6})
                 ],align="center")
-                   ])
+                   ],fluid=True)
            ])
        ], label='States Comparision')
     ])
