@@ -95,7 +95,7 @@ app.layout = html.Div([
                    ],width={"size": 6})
                 ],align="center")
                    ])
-           ],style={'width':'75%', 'margin':5, 'Align': 'center'})
+           ])
        ], label='States Comparision')
     ])
 ])
