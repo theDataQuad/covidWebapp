@@ -23,7 +23,7 @@ print('Imports Finished')
 #current_time = now#timestamp
 print("App is Ready to use at ", datetime.now().strftime("%H:%M:%S"))#timestamp
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
 
 app.layout = html.Div([
     html.Title('Statewise Viz'),
@@ -52,26 +52,35 @@ app.layout = html.Div([
                      ]),
            html.Br(),
            html.Div([
-           html.Div([
-                html.Div([
-                    dcc.Graph(id='line')
-                ],className="six columns")
-            ],className="row",style={'width':'75%', 'margin':5, 'Align': 'center'}),
-           html.Div([
-                html.Div([
-                    dcc.Graph(id='line2')
-                ],className="six columns")
-            ],className="row"),
-           html.Div([
+               dbc.Row([
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([
+                           html.Div([
+                               dcc.Graph(id='line')
+                            ])
+                           ])
+                           ], color="dark")
+                       ],width=6),#,width={"size": 5}
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([#"This is some text within a card body", #remove comment if needed
+                            html.Div([
+                                dcc.Graph(id='line2')
+                             ])
+                             ])
+                    ], color="dark")
+                   ],width=6)
+                ],align="center"),
+               html.Br(),
+               dbc.Row([
                 html.Div([
                     dcc.Graph(id='line3')
-                ],className="six columns")
-            ],className="row"),
-           html.Div([
+                ]),
                 html.Div([
                     dcc.Graph(id='line4')
-                ],className="six columns")
-            ],className="row")
+                ])
+            ],align="center",),
            ],style={'width':'75%', 'margin':5, 'Align': 'center'})
        ], label='States Comparision')
     ])
@@ -96,7 +105,7 @@ def display_death_date(bar_item):
 
 #PIECHART
 @app.callback(Output('pie', 'figure'),
-              Input('bar',component_property='clickData'))#Input('selected_state_in_bar', 'value'))#should be replaced by input from bar
+              Input('bar',component_property='clickData'))
 def display_selected_state_line(state):
     if state is None:
         return pie_chart('India')
