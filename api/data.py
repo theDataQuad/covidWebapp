@@ -1,4 +1,5 @@
 import pandas as pd
+from numpy import delete
 
 #def __init__():
 #   ndf=pd.read_csv('daily.csv')
@@ -11,7 +12,14 @@ def daily():
 
 def statelist():
     ndf=pd.read_csv('daily.csv')
-    return ndf['State'].unique()
+    sl=ndf['State'].unique()
+    sln=[]
+    for i in sl:
+    	if i=='India'or i=='State Unassigned':
+    		continue
+    	else:
+    		sln.append(i)
+    return sln
 
 def featurelist():
     return ['Confirmed','Recovered','Deceased','Tested','Death_Rate']

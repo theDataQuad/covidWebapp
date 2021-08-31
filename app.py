@@ -108,8 +108,10 @@ app.css.append_css({
 @app.callback([Output('line', 'figure'),Output('line2','figure'),Output('line3','figure'),Output('line4','figure')],
               [Input('state1', 'value')])
 def display_selected_state_line(state1):
-    if type(state1)=='str':
-        return lineState([state1],'Tested'),lineState([state1],'Confirmed'),lineState([state1],'Recovered'),lineState([state1],'Deceased')
+    if len(state1) == 0:
+    	return lineState(['India'],'Tested'),lineState(['India'],'Confirmed'),lineState(['Indoa'],'Recovered'),lineState(['India'],'Deceased')
+    elif len(state1)==1:
+        return lineState(state1,'Tested'),lineState(state1,'Confirmed'),lineState(state1,'Recovered'),lineState(state1,'Deceased')
     else:
         return lineState(state1,'Tested'),lineState(state1,'Confirmed'),lineState(state1,'Recovered'),lineState(state1,'Deceased')
 
