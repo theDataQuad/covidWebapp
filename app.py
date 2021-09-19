@@ -141,7 +141,7 @@ app.css.append_css({
               [Input('state1', 'value')])
 def display_selected_state_line(state1):
     if len(state1) == 0:
-    	return lineState(['India'],'Tested'),lineState(['India'],'Confirmed'),lineState(['Indoa'],'Recovered'),lineState(['India'],'Deceased')#spelling mistake indoa
+    	return lineState(['India'],'Tested'),lineState(['India'],'Confirmed'),lineState(['India'],'Recovered'),lineState(['India'],'Deceased')
     elif len(state1)==1:
         return lineState(state1,'Tested'),lineState(state1,'Confirmed'),lineState(state1,'Recovered'),lineState(state1,'Deceased')
     else:
