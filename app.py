@@ -3,6 +3,7 @@ print('App is Starting...')
 print('#################################################################################################')
 import pandas as pd
 import dash
+import gunicorn
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
