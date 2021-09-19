@@ -116,18 +116,18 @@ app.layout = html.Div([
         dbc.Tab([
             dbc.Container([
                dbc.Row([
-                   dbc.Col([],width={"size": 3}),
+                   dbc.Col([],width={"size": 2}),
                    dbc.Col([
             dbc.Carousel(
     items=[
         {"key": "1", "src": "/static/images/slide1.png"},
         {"key": "2", "src": "/static/images/slide2.png"},
         {"key": "3", "src": "/static/images/slide3.png"},
-        {"key": "4", "src": "/static/images/slide4.jpeg"}
+        {"key": "4", "src": "/static/images/slide4.png"}
     ],
     className="carousel-fade")
-                ],width={"size": 6})
-            ,dbc.Col([],width={"size": 3})
+                ],width={"size": 8})
+            ,dbc.Col([],width={"size": 2})
                 ],align="center")
                 ],fluid=True)
         ], label='Devolepers')
