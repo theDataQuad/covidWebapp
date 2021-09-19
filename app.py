@@ -120,8 +120,8 @@ app.layout = html.Div([
                    dbc.Col([
             dbc.Carousel(
     items=[
-        {"key": "1", "src": "/static/images/slide1.jpeg"},
-        {"key": "2", "src": "/static/images/slide2.jpeg"},
+        {"key": "1", "src": "/static/images/slide1.png"},
+        {"key": "2", "src": "/static/images/slide2.png"},
         {"key": "3", "src": "/static/images/slide3.jpeg"},
         {"key": "4", "src": "/static/images/slide4.jpeg"}
     ],
