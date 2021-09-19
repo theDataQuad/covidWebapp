@@ -10,8 +10,7 @@ def lineState(State,Feature):
     return px_line(s, x="Date", y=Feature,color='State',title='Comparison of '+Feature+' Cases in '+State[0]+' and '+State[1]).update_layout(
                         template='plotly_dark',
                         plot_bgcolor= 'rgba(0, 0, 0, 0)',
-                        paper_bgcolor= 'rgba(0, 0, 0, 0)',
-                    )
+                        paper_bgcolor= 'rgba(0, 0, 0, 0)')
 
 
 def pie_chart(State):
