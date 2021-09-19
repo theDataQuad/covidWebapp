@@ -24,6 +24,7 @@ print('Imports Finished')
 print("App is Ready to use at ", datetime.now().strftime("%H:%M:%S"))#timestamp
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
+server = app.server
 
 app.layout = html.Div([
     html.Title('Statewise Viz'),
