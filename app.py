@@ -34,14 +34,28 @@ app.layout = html.Div([
         dbc.Tab([
             #dcc.Dropdown(id='bar_item',options=[{'label': feature, 'value': feature}
              #             for feature in ['Death_rate']],value='Death_rate'),
-            html.Div([
+            dbc.Container([
+                   dbc.Row([
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([
                 html.Div([
                     dcc.Graph(id='bar',clickData=None,figure=barChart())
                 ],className="six columns"),
+                           ])
+                           ], color="dark",className="w-100 mb-3")
+                       ],width={"size": 6}),
+                   dbc.Col([
+                       dbc.Card([
+                           dbc.CardBody([
                 html.Div([
                     dcc.Graph(id='pie')
                 ],className="six columns")
-            ],className="row")
+            ])
+                    ], color="dark",className="w-100 mb-3")
+                   ],width={"size": 6})
+                ],align="center")
+                   ],fluid=True)
         ], label='Country'),
        dbc.Tab([
            html.Div([

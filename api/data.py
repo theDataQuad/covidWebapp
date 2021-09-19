@@ -11,7 +11,9 @@ def daily():
 
 def statelist():
     ndf=pd.read_csv('daily.csv')
-    return ndf['State'].unique()
+    #print(type(ndf['State'].unique()))
+    #print(ndf['State'].unique())
+    return ndf['State'].unique()#.drop(labels=['India','State Unassigned'])
 
 def featurelist():
     return ['Confirmed','Recovered','Deceased','Tested','Death_Rate']
