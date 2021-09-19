@@ -110,7 +110,25 @@ app.layout = html.Div([
                 ],align="center")
                    ],fluid=True)
            ])
-       ], label='States Comparision')
+       ], label='States Comparision'),
+        dbc.Tab([
+            dbc.Container([
+               dbc.Row([
+                   dbc.Col([],width={"size": 3}),
+                   dbc.Col([
+            dbc.Carousel(
+    items=[
+        {"key": "1", "src": "/static/images/slide1.jpeg"},
+        {"key": "2", "src": "/static/images/slide2.jpeg"},
+        {"key": "3", "src": "/static/images/slide3.jpeg"},
+        {"key": "4", "src": "/static/images/slide4.jpeg"}
+    ],
+    className="carousel-fade")
+                ],width={"size": 6})
+            ,dbc.Col([],width={"size": 3})
+                ],align="center")
+                ],fluid=True)
+        ], label='Devolepers')
     ])
 ])
 
@@ -123,7 +141,7 @@ app.css.append_css({
               [Input('state1', 'value')])
 def display_selected_state_line(state1):
     if len(state1) == 0:
-    	return lineState(['India'],'Tested'),lineState(['India'],'Confirmed'),lineState(['Indoa'],'Recovered'),lineState(['India'],'Deceased')
+    	return lineState(['India'],'Tested'),lineState(['India'],'Confirmed'),lineState(['Indoa'],'Recovered'),lineState(['India'],'Deceased')#spelling mistake indoa
     elif len(state1)==1:
         return lineState(state1,'Tested'),lineState(state1,'Confirmed'),lineState(state1,'Recovered'),lineState(state1,'Deceased')
     else:
