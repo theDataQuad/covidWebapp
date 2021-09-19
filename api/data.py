@@ -1,4 +1,5 @@
 import pandas as pd
+from numpy import delete
 
 #def __init__():
 #   ndf=pd.read_csv('daily.csv')
@@ -7,13 +8,18 @@ def daily():
     ndf=pd.read_csv('daily.csv')
     swave=ndf.loc[12610:,["Date",'State','Confirmed','Recovered','Deceased','Other','Tested','Death_Rate']]
     return swave
-        
+
 
 def statelist():
     ndf=pd.read_csv('daily.csv')
-    #print(type(ndf['State'].unique()))
-    #print(ndf['State'].unique())
-    return ndf['State'].unique()#.drop(labels=['India','State Unassigned'])
+    sl=ndf['State'].unique()
+    sln=[]
+    for i in sl:
+    	if i=='India'or i=='State Unassigned':
+    		continue
+    	else:
+    		sln.append(i)
+    return sln
 
 def featurelist():
     return ['Confirmed','Recovered','Deceased','Tested','Death_Rate']
