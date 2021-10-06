@@ -123,7 +123,7 @@ app.layout = html.Div([
         {"key": "1", "src": "/static/images/slide1.png"},
         {"key": "2", "src": "/static/images/slide2.png"},
         {"key": "3", "src": "/static/images/slide3.png"},
-        {"key": "4", "src": "/static/images/slide4.png"}
+        {"key": "4", "src": "/static/images/slide5.png"}
     ],
     className="carousel-fade")
                 ],width={"size": 8})
