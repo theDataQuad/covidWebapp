@@ -28,6 +28,8 @@ vac=pd.read_csv(url_vac)
 vac.to_csv('vac_daily.csv',index=False)
 print('daily vaccination data saved!!')
 
+vac.dropna(inplace=True)
+print(" Null values dropped")
 sumvac=vac.tail(38)
 sumvac.reset_index(inplace=True)
 sumvac['State'][37]="India"

@@ -15,7 +15,10 @@ def lineState(State,Feature):
 
 def pie_chart(State):
     df=data.vac_percent()
+    #df.dropna(inplace=True)
+    #display(df.tail(30)
     pi=df[df.State.isin([State])].T
+    #display(pi)
     pi.reset_index(inplace=True)
     pi.drop([0,1,2],inplace=True)
     pi.columns=['x','Total']
