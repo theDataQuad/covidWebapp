@@ -20,8 +20,6 @@ print('#########################################################################
 print('Imports Finished')
 
 
-#now = #timestamp
-#current_time = now#timestamp
 print("App is Ready to use at ", datetime.now().strftime("%H:%M:%S"))#timestamp
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
