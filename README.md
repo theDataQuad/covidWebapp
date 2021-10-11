@@ -1,6 +1,6 @@
 # COVID WebApp
 This project is intended to be a "learning by doing" experience for the developer team.
-This was a learning-oriented project done by the devolepers to learn more about git, flask, dash, plotly, deployment,etc and to get the practical experience handling a project. The whole project was done with the data from COVID INDIA API. In this 
+This was a learning-oriented project done by the devolepers to learn more about git, flask, dash, plotly, deployment,etc and to get the practical experience in handling a project. The whole project was done with the data from COVID INDIA API. In this 
 project we created visualization of COVID and vaccination status which includes the statewise Deathrate,Tested cases,Confirmed cases,Recovered cases,Deceased Cases.
 Plotly, being more sophisticated is used as data visualization tool  for creating elaborate plots more efficiently. 
 
@@ -20,7 +20,7 @@ Plotly, being more sophisticated is used as data visualization tool  for creatin
   ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/86158829/136753012-37c5a8cb-c2e2-4ba6-9171-277bc0241664.gif)
 
 ## Documentation
-This project aims to create a covid webapp.It is a "learning by doing"experience which provided us the practical experience in handling of git,flask,plotly,dash,deployment etc.This project was done with data from COVID INDIA API.This covid webapp provides the visualizations of vaccination status in states of India along with the statewise Deathrate,Tested cases,Confirmed cases,Recovered cases,Deceased Cases.Thus making  an efficient way of comparison.
+This project aims to create a covid webapp.It is a "learning by doing"experience which provided us the practical experience in handling of git,flask,plotly,dash,deployment etc.This project was done with the data from COVID INDIA API.This covid webapp provides the visualizations of vaccination status in the states of India along with the statewise Death rate,Tested Cases,Confirmed Cases,Recovered Cases,Deceased Cases.Thus making  an efficient way of comparison.
 
   -Statewise Deathrate is plotted in bar chart,vaccination status in pie chart with labels partially_vaccinated,fully vaccinated and not vaccinated.
   
@@ -36,9 +36,9 @@ This project aims to create a covid webapp.It is a "learning by doing"experience
   
   -Using 'Autoscale' option or double clicking on screen we can reset the graph.(DASH Feature).
   
-  -Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to tell total vs partially vaccinated). (DASH Feature)
+  -Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to tell total vs partially  vaccinated). (DASH Feature)
   
-  -Placing the cursor on any particular case of Vaccination Pie chart shows it's label,no of respective case and it's percentage.(APP Feature)
+  -Placing the cursor on any particular case of Vaccination Pie chart shows it's label,number of respective case and it's   percentage.(APP Feature)
   
   -In the state comparison tab, selecting no state will result in the line chart of India. (APP Feature)
   
@@ -46,9 +46,9 @@ This project aims to create a covid webapp.It is a "learning by doing"experience
   
   -Cases like Tested,Confirmed,Recovered,Deceased are shown in line chart.Each state is shown in different colour .
   
-  -Multiple states can be viewed altoghther which gives the user the better understanding of case rate in each state.(APP Feature).
+  -Multiple states can be viewed altoghther which gives the user the better understanding of case rate in each state.(APP   Feature).
   
-  -Clicking on the legend item of any particular selected state,makes the line chart of that state disapper(With this feature we can easily differentiate the lines of        other states).(DASH Feature)
+  -Clicking on the legend item of any particular selected state,makes the line chart of that state disapper(With this feature we can easily differentiate the lines of other states).(DASH Feature)
   
   -Placing the cursor on any point of line graph shows the state,date and number of respective cases reported.(DASH Feature)
   
