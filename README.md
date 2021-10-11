@@ -21,9 +21,11 @@ Plotly, being more sophisticated is used as data visualization tool  for creatin
 
 ## Documentation
 This project aims to create a covid webapp.It is a "learning by doing"experience which provided us the practical experience handling of git,flask,plotly,dash,deployment etc.This project was done with data from COVID INDIA API.This covid webapp provides the visualizations of vaccination status of different states of India along with the statewise Deathrate,Tested cases,Confirmed cases,Recovered cases,Deceased Cases.Thus making  an efficient way of comparison.
-statewise Deathrate is plotted in bar chart 
+Statewise Deathrate is plotted in bar chart,vaccination status in pie chart with labels partially_vaccinated,fully vaccinated and not vaccinated.
+Cases like Tested,Confirmed,Recovered,Deceased are shown in line chart.Each state is shown in different colour .
+Multiple states can be viewed altoghther which gives the user the better understanding of case rate in each state.
 Clicking on a bar in the bar chart makes changes in the adjacent pie chart. (APP Feature) 
-Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to sell total vs partially vaccinated). (DASH Feature)
+Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to tell total vs partially vaccinated). (DASH Feature)
 In the state comparison tab, selecting no state will result in the line chart of India. (APP Feature)
 In the state comparison tab, the Search option is available. (DASH Feature)
 
