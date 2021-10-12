@@ -16,41 +16,34 @@ Plotly, being more sophisticated is used as data visualization tool  for creatin
   
 ## Demo
  
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/86158829/136935766-a61f3ca4-ce1d-4fb0-8179-91f13134753f.gif)
 
-  ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/86158829/136753012-37c5a8cb-c2e2-4ba6-9171-277bc0241664.gif)
+  
 
 ## Documentation
 This project aims to create a covid webapp.It is a "learning by doing"experience which provided us the practical experience in handling of git,flask,plotly,dash,deployment etc.This project was done with the data from COVID INDIA API.This covid webapp provides the visualizations of vaccination status in the states of India along with the statewise Death rate,Tested Cases,Confirmed Cases,Recovered Cases,Deceased Cases.Thus making  an efficient way of comparison.
 
   -Statewise Deathrate is plotted in bar chart,vaccination status in pie chart with labels partially_vaccinated,fully vaccinated and not vaccinated.
   
-  -Clicking on a bar in the bar chart makes changes in the adjacent pie chart. (APP Feature) 
+  -Clicking on a particular state's bar from the bar chart changes the adjacent pie chart and the vaccination status of that particular state will be shown there.
   
-  -Placing cursor on a single bar shows the state name and death rate of corresponding state(APP Feature).
+  -Placing cursor on a single bar shows the state name and death rate of corresponding state.
   
-  -Selecting the 'box select' option we can zoom into any particular states by clicking and draging the square box.(DASH Feature)
+  -Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to tell total vs partially  vaccinated).
   
-  -Using 'lasso select' option we can freely choose the area that we need to focus by drawing shapes.(DASH Feature).
+  -Placing the cursor on any particular case of Vaccination Pie chart shows it's label,number of respective case and it's   percentage.
   
-  -Clicking on 'Pan select' option we can move along x and y axises also by using 'Reset axis' option we can reset it.(DASH Feature)
+  -In the state comparison tab, selecting no state will result in the line chart of India.
   
-  -Using 'Autoscale' option or double clicking on screen we can reset the graph.(DASH Feature).
-  
-  -Clicking on a legend item of the pie chart makes that item disappear (You can use this feature to tell total vs partially  vaccinated). (DASH Feature)
-  
-  -Placing the cursor on any particular case of Vaccination Pie chart shows it's label,number of respective case and it's   percentage.(APP Feature)
-  
-  -In the state comparison tab, selecting no state will result in the line chart of India. (APP Feature)
-  
-  -In the state comparison tab, the Search option is available. (DASH Feature)
+  -In the state comparison tab, the Search option is available.
   
   -Cases like Tested,Confirmed,Recovered,Deceased are shown in line chart.Each state is shown in different colour .
   
-  -Multiple states can be viewed altoghther which gives the user the better understanding of case rate in each state.(APP   Feature).
+  -Multiple states can be viewed altoghther which gives the user the better understanding of case rate in each state.
   
-  -Clicking on the legend item of any particular selected state,makes the line chart of that state disapper(With this feature we can easily differentiate the lines of other states).(DASH Feature)
+  -Clicking on the legend item of any particular selected state,makes the line chart of that state disapper(With this feature we can easily differentiate the lines of other states).
   
-  -Placing the cursor on any point of line graph shows the state,date and number of respective cases reported.(DASH Feature)
+  -Placing the cursor on any point of line graph shows the state,date and number of respective cases reported.
   
 ## Screenshots
 
@@ -68,6 +61,22 @@ To see the deployed project, follow the link
   
 ## Authors
 - [@Vaishak N](https://github.com/VaishU2235)
+
+  MSc.Datascience
+  
+  Manipal Academy of Higher Education
 - [@Prabin Raj K P](https://github.com/prabinrajkp)
+
+  MSc.Datascience 
+  
+  University of Kerala
 - [@Sreenivas Shenoy](https://github.com/sreeni7799)
+
+  MSc.Computer Science with Specialization in Datascience
+  
+  Cochin University of Science and Technology
 - [@Adheena P](https://github.com/Adheena19)
+
+  MSc.Computer Science with Specialization in Datascience
+  
+  Cochin University of Science and Technology
