@@ -20,8 +20,8 @@ Plotly, being more sophisticated is used as data visualization tool  for creatin
 
   
 
-## Documentation
-This project aims to create a covid webapp.It is a "learning by doing"experience which provided us the practical experience in handling of git,flask,plotly,dash,deployment etc.This project was done with the data from COVID INDIA API.This covid webapp provides the visualizations of vaccination status in the states of India along with the statewise Death rate,Tested Cases,Confirmed Cases,Recovered Cases,Deceased Cases.Thus making  an efficient way of comparison.
+## Guidelines
+Through this project we create a covidwebapp that shows the covid and vaccination status in the states of India through different visualization techniques.The guidelines are as follows:
 
   -Statewise Deathrate is plotted in bar chart,vaccination status in pie chart with labels partially_vaccinated,fully vaccinated and not vaccinated.
   
@@ -56,7 +56,7 @@ This project aims to create a covid webapp.It is a "learning by doing"experience
 To see the deployed project, follow the link
 
 ```bash
-  https://coviviz.herokuapp.com/.
+  https://coviviz.herokuapp.com/ 
 ```
   
 ## Authors
