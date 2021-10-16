@@ -40,7 +40,18 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([
                 html.Div([
-                    dcc.Graph(id='bar',clickData=None,figure=barChart())
+                    dcc.Graph(id='bar',clickData=None,figure=barChart(),
+				    config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                    
+                    )
                 ],className="six columns"),
                            ])
                            ], color="dark",className="w-100 mb-3")
@@ -49,7 +60,17 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([
                 html.Div([
-                    dcc.Graph(id='pie')
+                    dcc.Graph(id='pie',
+                    	config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                    )
                 ],className="six columns")
             ])
                     ], color="dark",className="w-100 mb-3")
@@ -70,7 +91,17 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([
                            html.Div([
-                               dcc.Graph(id='line')
+                               dcc.Graph(id='line',\
+                               	config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                               )
                             ])
                            ])
                            ], color="dark",className="w-100 mb-3")
@@ -79,7 +110,17 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([#"This is some text within a card body", #remove comment if needed
                             html.Div([
-                                dcc.Graph(id='line2')
+                                dcc.Graph(id='line2',
+                                	config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                                )
                              ])
                              ])
                     ], color="dark")
@@ -93,7 +134,17 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([
                            html.Div([
-                               dcc.Graph(id='line3')
+                               dcc.Graph(id='line3',
+                               	config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                               )
                             ])
                            ])
                            ], color="dark")
@@ -102,7 +153,17 @@ app.layout = html.Div([
                        dbc.Card([
                            dbc.CardBody([#"This is some text within a card body", #remove comment if needed
                             html.Div([
-                                dcc.Graph(id='line4')
+                                dcc.Graph(id='line4',
+                                	config={
+				      		'staticPlot': False,     # True, False
+				      		'scrollZoom': False,      # True, False
+				      		'doubleClick': 'reset',  # 'reset', 'autosize' or 'reset+autosize', False
+				      		'showTips': True,       # True, False
+				      		'displayModeBar': False,  # True, False, 'hover'
+				      		'watermark': False,
+				     		 # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+				        },
+                                )
                              ])
                              ])
                     ], color="dark")
@@ -118,8 +179,8 @@ app.layout = html.Div([
                    dbc.Col([
             dbc.Carousel(
     items=[
-        {"key": "1", "src": "/static/images/slide1.png"},
-        {"key": "2", "src": "/static/images/slide2.png"},
+        {"key": "1", "src": "/static/images/slide2.png"},
+        {"key": "2", "src": "/static/images/slide1.png"},
         {"key": "3", "src": "/static/images/slide3.png"},
         {"key": "4", "src": "/static/images/slide5.png"}
     ],
