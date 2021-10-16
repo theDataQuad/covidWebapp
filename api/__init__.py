@@ -4,12 +4,8 @@ warnings.filterwarnings("ignore")
 
 import os
 from datetime import datetime#timestamp
-if os.path.isfile('daily.csv'):
-    ts=os.path.getmtime('daily.csv')
-    if datetime.now().strftime("%Y-%m-%d") == datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d'):
-        print("Data is fresh")#Okay.. todays update is done...
-else:
-    #File does not exist or it is not todays.... Contact API....
+
+def getfile():
     url_vac='http://api.covid19india.org/csv/latest/vaccine_doses_statewise_v2.csv'
     url_day='https://api.covid19india.org/csv/latest/states.csv'
     df=pd.read_csv(url_day)
@@ -54,3 +50,14 @@ else:
 
     df.to_csv('pop_with_vac.csv',index=False)
     print('population data saved!!')
+
+try:
+    ts=os.path.getmtime('daily.csv')
+    if datetime.now().strftime("%Y-%m-%d") == datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d'):
+        print("Data is fresh")#Okay.. todays update is done...
+    else:
+        #File does not exist or it is not todays.... Contact API....
+        getfile()
+except FileNotFoundError:
+    print("File not present")
+    getfile()
