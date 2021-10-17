@@ -127,7 +127,14 @@ app.layout = html.Div([
                 ],width={"size": 8})
             ,dbc.Col([],width={"size": 2})
                 ],align="center")
-                ],fluid=True)
+                ],fluid=True),
+                html.Hr(),
+                dbc.Row([
+                    dbc.Col([
+                    html.Div([html.H6("Data is taken from: COVID19 INDIA API - ")], style={'display': 'inline-block'}),
+                    html.Div(html.A("github.com/covid19india/api", href="https://github.com/covid19india/api"),style={'display': 'inline-block'})
+                    ],width={"size": 12})
+                    ],justify="center", align="center", className="h-50"),
         ], label='Devolepers')
     ])
 ])
@@ -159,4 +166,4 @@ def display_selected_state_line(state):
         return pie_chart(state['points'][0]['x'])
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server()
